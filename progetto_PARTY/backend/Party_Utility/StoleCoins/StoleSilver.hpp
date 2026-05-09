@@ -14,7 +14,7 @@ class StoleSilver : public Items
 
     int Stolen;
 
-    StoleSilver(): Items("Silver Stealer", "If applyed to against someone you will rob part of their silver coins",
+    StoleSilver(): Items("Silver Stealer", "If applied against someone you will rob part of their silver coins",
                          ItemPrices::EXPENSIVE),
     gen(rd()),
     Stolable(1, 50)
