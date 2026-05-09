@@ -1,0 +1,22 @@
+#pragma once
+#include "./../Items.hpp"
+
+#include <iostream>
+#include <random>
+
+
+class StoleSilver : public Items
+{
+
+    std::random_device rd;
+    std::mt19937 gen;
+    std::uniform_int_distribution<int> Stolable;
+
+    int Stolen;
+
+    StoleSilver(): Items("Silver Stealer", "If applyed to against someone you will rob part of their silver coins",
+                         ItemPrices::EXPENSIVE),
+    gen(rd()),
+    Stolable(1, 50)
+    {}
+};
