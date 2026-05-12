@@ -49,13 +49,16 @@ inline void RemoveUtility(Bot& bot, const Dice<N>& die)
     } 
 }
 
-template <std::size_t N>
+template <std::size_t N, std::size_t T>
 
-inline std::array<int, 2> RollDice(Bot& bot, Dice<N>& die)
+inline auto RollDice(Bot& bot, Dice<N, T>& die)
 {
 
     constexpr int MAX_LENGTH = 100;
     int Rolls[MAX_LENGTH];
+
+    //used to get the best numbers and as a return of the 3 rolled numbers
+    std::array <int, T> numbers;
 
     std::random_device rd;
     std::mt19937 generator(rd());
@@ -71,61 +74,37 @@ inline std::array<int, 2> RollDice(Bot& bot, Dice<N>& die)
     int Rigged_Rolls = bot.percentage;
     int pendence = DiceSteps.at(bot.difficulty);
 
-    //TODO se hai doppio dado dopo aver vinto un minigioco non puoi usare UseSpecialDie
-    if(bot.MoreDice || ( bot.UseSpecialDie && die.trows > 1 ))
-    {   
-        //-1
-        for(int trow = 0; trow < (Rigged_Rolls - 1); trow++)
+    for(size_t trow = 0; trow < Rigged_Rolls; trow += T)
+    {
+        int sum = 0;
+
+        for(size_t i = 0; i < numbers.size(); i++)
         {
-
-            std::array<int, 2> numbers = die.Dice2Trow();
-            int sum = numbers[0] + numbers[1];
-
-            if(sum > favourable_place - pendence && 
-            sum < favourable_place + pendence)
-            {
-                Rolls[trow] = numbers[0];
-                Rolls[trow + 1] = numbers[1];
-            }else{
-                trow--;
-            }
+            numbers.at(i) = die.TrowDice();
+            sum += numbers.at(i);
         }
-
-        for(int trows = MAX_LENGTH - Rigged_Rolls; trows < MAX_LENGTH; trows++)
-            Rolls[trows] = die.faces[values(generator)]; 
-            
-        if(bot.MoreDice)
-            bot.MoreDice = !bot.MoreDice;
-        
-        //TODO vedere se fare un altro file per ordinare il tutto e rendere tutto il più sincronizzato con il front-end
-        RemoveUtility(bot, die);
-
-        return { Rolls[get_number(generator)] , Rolls[get_number(generator)]};
-
-    }else{
-        
-        //do single dice format
-
-        for(int trow = 0; trow < Rigged_Rolls; trow++)
+         
+        if(sum > favourable_place - pendence &&
+           sum < favourable_place + pendence)
         {
-            int number = die.Dice1Trow();
-
-            if( number > favourable_place - pendence && 
-                number < favourable_place + pendence)
-            {
-                Rolls[trow] = number;    
-            }else{
-                trow--;
-            }
+            for(size_t i = trow; i < (trow + T) && i < MAX_LENGTH; i++)
+                Rolls[i] = numbers.at(trow % T);
+        }else{
+            trow -= T;
         }
-
-        RemoveUtility(bot, die);
-
-        for(int trows = MAX_LENGTH - Rigged_Rolls; trows < MAX_LENGTH; trows++)
-            Rolls[trows] = die.faces[values(generator)];
-   
     }
 
-    return { Rolls[get_number(generator)], -1};
-    //TODO fare il lancio dei risultati quando si farà la transizione con python    
+    //insert normal values after rigged
+    for(size_t trows = Rigged_Rolls; trows < MAX_LENGTH; trows++)
+            Rolls[trows] = die.faces[values(generator)];
+
+    //get rigged numbers
+    for(size_t rolls = 0; rolls < T; rolls++)
+        numbers.at(rolls) = Rolls[get_number(generator)];
+
+    //NB: usi dado speciale se non hai vinto un minigame
+    if(bot.UseSpecialDie)
+        RemoveUtility(bot, die);
+
+    return numbers;  
 }

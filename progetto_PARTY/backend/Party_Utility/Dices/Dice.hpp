@@ -5,7 +5,7 @@
 #include <array>
 #include <random>
 
-template <std::size_t N>
+template <std::size_t N, std::size_t Trow = 1>
 
 class Dice : public Items
 {
@@ -13,16 +13,14 @@ class Dice : public Items
 
     const std::array<int, N> faces;
 
-    int trows;
-
-    Dice(std::string name,std::string desc,std::array<int, N> f, int price, int trows = 1) 
-        : Items(name, desc, price) ,faces(f), trows(trows)
+    Dice(std::string name,std::string desc,std::array<int, N> f, int price) 
+        : Items(name, desc, price) ,faces(f)
         {}
     
     //TODO vedere come applicare la logica del roll the dice  
     
     //for RollDice algorithm
-    int Dice1Trow()
+    int TrowDice()
     {
 
         std::random_device rd;
@@ -32,7 +30,7 @@ class Dice : public Items
         return faces[dist(gen)];
     }
 
-    std::array<int, 2> Dice2Trow()
+    /*std::array<int, 2> Dice2Trow()
     {
         std::array<int, 2> numbers = {};
 
@@ -45,5 +43,5 @@ class Dice : public Items
             numbers[trows] = dist(generator);
 
         return numbers;
-    }
+    }*/
 };
