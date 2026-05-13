@@ -1,3 +1,5 @@
+#pragma once
+
 #include "./../Items.hpp"
 
 #include <unordered_map>

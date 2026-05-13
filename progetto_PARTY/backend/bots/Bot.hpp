@@ -9,6 +9,7 @@ Creating the instances of the bots that will play in the in the game
 */
 #include <iostream>
 
+#include <array>
 #include <unordered_map>
 #include <thread>
 #include <memory>
@@ -39,8 +40,9 @@ class Bot
     int goldCoins = 0;
      
     //TODO implementare logica dell'array di oggetti di elementi da poter utilizzare
-    std::unique_ptr<Items> Utilities [3];
-    int countUtilities = 0;
+    std::array <std::unique_ptr<Items>, 3> Utilities;
+    //std::unique_ptr<Items> Utilities [3];
+    //int countUtilities = 0;
 
     std::thread th;
 

@@ -1,6 +1,10 @@
 #pragma once
 
+#include "./../bots/Bot.hpp"
+#include "./Dices/Dice.hpp"
+
 #include <iostream>
+#include <memory>
 
 class Items
 {
@@ -22,13 +26,25 @@ class Items
     //TODO implementare logica,vedere come fare
     void UseItem();
 
-    Items AddItem();
-    void RemoveItem();
+    //TODO vedere come fare, può essere che l'array è pieno o si può aggiungere,posso ritornare come no
+    void AddItem(Bot& bot, const Items& Item);
+
+    void RemoveItem(Bot& bot, const Items& Item)
+    {
+        for(auto& Utility : bot.Utilities)
+        {
+            if(Utility.get() == &Item)
+            {
+                Utility = nullptr;
+                break;
+            }
+        }
+    }
 
     protected:
 
     //why an enum and not an enum class?
-    const enum ItemPrices : int
+    enum ItemPrices : int
     {
         CHEAP     = 10,
         BUDGET    = 15,

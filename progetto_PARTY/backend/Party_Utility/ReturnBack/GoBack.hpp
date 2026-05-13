@@ -1,3 +1,5 @@
+#pragma once
+
 #include "./../Items.hpp"
 
 #include <random>
@@ -13,6 +15,8 @@ class GoBack: public Items
     GoBack(): Items("Go where you belong!", 
                     "IF applied to someone, he will go back an undeterminate times of blocks",
                     ItemPrices::BUDGET)
-    
     {}
+
+    ~GoBack(){}
 };
+   

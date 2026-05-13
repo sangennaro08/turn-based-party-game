@@ -23,11 +23,6 @@ class StoleSilver : public Items
     Stolable(1, 50)
     {}
 
-    ~StoleSilver();
-
     //TODO implementare logica,vedere come fare e se funziona
-    int StealSilver()
-    {
-        return Stolable(gen);
-    }
+    int StealSilver(){return Stolable(gen);}
 };

@@ -6,6 +6,7 @@
 #include "./../../Party_Utility/Dices/Type_of_dices/DoubleDice.hpp"
 
 #include "./../../bots/Bot.hpp"
+#include "./../../Party_Utility/Items.hpp"
 
 //TODO finire questo file
 
@@ -29,7 +30,7 @@ const std::unordered_map<std::string, int> DiceSteps
 };
 
 
-template <std::size_t N>
+/*template <std::size_t N>
 
 inline void RemoveUtility(Bot& bot, const Dice<N>& die)
 {
@@ -47,7 +48,7 @@ inline void RemoveUtility(Bot& bot, const Dice<N>& die)
             } 
         }
     } 
-}
+}*/
 
 template <std::size_t N, std::size_t T>
 
@@ -94,9 +95,9 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
         }
     }
 
-    //insert normal values after rigged
+    //insert normal values after rigged ones
     for(size_t trows = Rigged_Rolls; trows < MAX_LENGTH; trows++)
-            Rolls[trows] = die.faces[values(generator)];
+        Rolls[trows] = die.faces[values(generator)];
 
     //get rigged numbers
     for(size_t rolls = 0; rolls < T; rolls++)
@@ -104,7 +105,12 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
 
     //NB: usi dado speciale se non hai vinto un minigame
     if(bot.UseSpecialDie)
-        RemoveUtility(bot, die);
+    {
+        die.RemoveItem(bot, die);
+        bot.UseSpecialDie = !bot.UseSpecialDie;
+    }
+        
+    //RemoveUtility(bot, die);
 
     return numbers;  
 }

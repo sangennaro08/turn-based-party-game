@@ -1,4 +1,4 @@
-
+#pragma once
 /*
 
 Creating the instances of the bots that will play in the in the game

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "./../Items.hpp"
 
 #include <unordered_map>
@@ -5,6 +7,8 @@
 //TODO fare la logica del normal pipe
 class NormalPipe: public Items
 {
+
+    public:
 
     std::unordered_map<int, int> coordinate;
 
