@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "./../Party_Utility/Items.hpp"
+#include "./Inventory.hpp"
 
 /*
 
@@ -36,17 +37,15 @@ class Bot
     bool MoreDice = false;
     bool UseSpecialDie = false;
 
-    int silverCoins = 0;
-    int goldCoins = 0;
-     
-    //TODO implementare logica dell'array di oggetti di elementi da poter utilizzare
-    std::array <std::unique_ptr<Items>, 3> Utilities;
-    //std::unique_ptr<Items> Utilities [3];
-    //int countUtilities = 0;
+    Inventory Inv;
 
     std::thread th;
 
-    Bot(std::string name, std::string difficulty);
+    Bot(std::string name, std::string difficulty):
+    name(std::move(name)),
+    difficulty(std::move(difficulty)),
+    percentage(difficultiness.at(this->difficulty))
+    {}
     
-    ~Bot();
+    ~Bot(){}
 };

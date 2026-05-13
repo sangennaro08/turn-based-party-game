@@ -15,8 +15,6 @@ class Items
 
     const int price;
 
-    Items();
-
     Items(std::string name, std::string desc, int price):
     name(name),
     description(desc),
@@ -24,7 +22,7 @@ class Items
     {}
 
     //TODO implementare logica,vedere come fare
-    void UseItem();
+    /*void UseItem();
 
     //TODO vedere come fare, può essere che l'array è pieno o si può aggiungere,posso ritornare come no
     void AddItem(Bot& bot, const Items& Item);
@@ -39,7 +37,7 @@ class Items
                 break;
             }
         }
-    }
+    }*/
 
     protected:
 

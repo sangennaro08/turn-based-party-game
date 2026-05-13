@@ -29,19 +29,4 @@ class Dice : public Items
 
         return faces[dist(gen)];
     }
-
-    /*std::array<int, 2> Dice2Trow()
-    {
-        std::array<int, 2> numbers = {};
-
-        std::random_device rd;
-        std::mt19937 generator(rd());
-
-        std::uniform_int_distribution <int> dist(0, faces.size() - 1);
-
-        for(int trows = 0; trows < 2; trows++)
-            numbers[trows] = dist(generator);
-
-        return numbers;
-    }*/
 };

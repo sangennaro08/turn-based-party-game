@@ -6,6 +6,7 @@
 #include "./../../Party_Utility/Dices/Type_of_dices/DoubleDice.hpp"
 
 #include "./../../bots/Bot.hpp"
+#include "./../../bots/Inventory.hpp"
 #include "./../../Party_Utility/Items.hpp"
 
 //TODO finire questo file
@@ -28,27 +29,6 @@ const std::unordered_map<std::string, int> DiceSteps
     {"extreme",    2},
     {"impossible", 1}
 };
-
-
-/*template <std::size_t N>
-
-inline void RemoveUtility(Bot& bot, const Dice<N>& die)
-{
-    if(bot.UseSpecialDie)
-    {
-        bot.UseSpecialDie = !bot.UseSpecialDie;
-        bot.countUtilities--;
-
-        for(auto& Utilities : bot.Utilities)
-        {
-            if(Utilities.get() == &die)
-            {
-                Utilities = nullptr;
-                break;
-            } 
-        }
-    } 
-}*/
 
 template <std::size_t N, std::size_t T>
 
@@ -106,11 +86,10 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
     //NB: usi dado speciale se non hai vinto un minigame
     if(bot.UseSpecialDie)
     {
-        die.RemoveItem(bot, die);
+        //die.RemoveItem(bot, die);
+        bot.Inv.RemoveItem(die);
         bot.UseSpecialDie = !bot.UseSpecialDie;
     }
-        
-    //RemoveUtility(bot, die);
 
     return numbers;  
 }
