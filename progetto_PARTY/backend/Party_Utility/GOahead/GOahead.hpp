@@ -10,4 +10,6 @@ class GOahead: public Items
 
     GOahead(): Items("Sprint boost", "IF used you will have a 5 block boost when used a die", ItemPrices::MODERATE)
     {}
+
+    std::variant<std::string, int> UseItem() override {return Boost;}
 };

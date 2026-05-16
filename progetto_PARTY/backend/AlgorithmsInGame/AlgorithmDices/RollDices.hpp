@@ -32,13 +32,16 @@ const std::unordered_map<std::string, int> DiceSteps
 
 template <std::size_t N, std::size_t T>
 
+//TODO gestire in FE quale dado usare se non usa speciali è quello di default
+//TODO il dado normale sarà fatto su FE  e favuorable place verrà passato alla funzione
+//e calcolato nella pagina web
 inline auto RollDice(Bot& bot, Dice<N, T>& die)
 {
 
     constexpr int MAX_LENGTH = 100;
     int Rolls[MAX_LENGTH];
 
-    //used to get the best numbers and as a return of the 3 rolled numbers
+    //used to get thèe best numbers and as a return of the 3 rolled numbers
     std::array <int, T> numbers;
 
     std::random_device rd;

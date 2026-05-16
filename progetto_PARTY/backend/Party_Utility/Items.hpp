@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <memory>
+#include <variant>
 
 class Items
 {
@@ -20,8 +21,14 @@ class Items
     description(desc),
     price(price)
     {}
-
+    
     //TODO implementare logica,vedere come fare
+    //questa funzione la usano:
+    //Goback
+    //StoleSilver
+    //Goahead
+    virtual std::variant<std::string, int/*, std::unordered_map<int, int>*/> UseItem(){}
+
     /*void UseItem();
 
     //TODO vedere come fare, può essere che l'array è pieno o si può aggiungere,posso ritornare come no
@@ -52,6 +59,7 @@ class Items
         DELUXE    = 50
         
     };
+
     //same thing
     virtual ~Items() = default;
     //virtual ~Items(){}

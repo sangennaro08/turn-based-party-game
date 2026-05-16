@@ -2,14 +2,14 @@
 
 #include "./../Items.hpp"
 
-#include <unordered_map>
+#include <variant>
 
 //TODO fare logica del goldpipe
 class GoldPipe : public Items
 {
     public:
 
-    std::unordered_map <int, int> coordinate;
+    std::variant<int, std::string> coordinates[13][13];
 
     GoldPipe(): Items("Gold Pipe", "Warps you to a place of your choice", ItemPrices::DELUXE)
     {}
