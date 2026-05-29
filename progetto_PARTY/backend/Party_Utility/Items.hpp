@@ -60,21 +60,3 @@ class Items
         
     };
 };
-
-class PYItems : public Items
-{
-    public:
-
-    using Items::Items;
-
-    int UseItem() override
-    {
-        PYBIND11_OVERRIDE
-        (
-            int,
-            Items,
-            UseItem
-        );
-    }
-};
-
