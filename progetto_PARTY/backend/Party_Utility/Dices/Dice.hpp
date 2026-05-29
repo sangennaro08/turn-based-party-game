@@ -5,7 +5,7 @@
 #include <array>
 #include <random>
 
-template <std::size_t N, std::size_t Trow = 1>
+template <int N, int Trow = 1>
 
 class Dice : public Items
 {

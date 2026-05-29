@@ -1,16 +1,17 @@
 #pragma once
 
+#include "./../../Party_Utility/Dices/Dice.hpp"
 #include "./../../Party_Utility/Dices/Type_of_dices/Dice_0_1.hpp"
 #include "./../../Party_Utility/Dices/Type_of_dices/Dice_4_5_6.hpp"
 #include "./../../Party_Utility/Dices/Type_of_dices/Dice10F.hpp"
 #include "./../../Party_Utility/Dices/Type_of_dices/DoubleDice.hpp"
+#include "./../../Party_Utility/Dices/Type_of_dices/TripleDice.hpp"
 
 #include "./../../bots/Bot.hpp"
 #include "./../../bots/Inventory.hpp"
 #include "./../../Party_Utility/Items.hpp"
 
 //TODO finire questo file
-
 
 //TODO vedere come togliere oggetto se usato, si intende su JS a livello grafico e logico sincronizzarli.
 
@@ -30,7 +31,7 @@ const std::unordered_map<std::string, int> DiceSteps
     {"impossible", 1}
 };
 
-template <std::size_t N, std::size_t T>
+template <int N, int T>
 
 //TODO gestire in FE quale dado usare se non usa speciali è quello di default
 //TODO il dado normale sarà fatto su FE  e favuorable place verrà passato alla funzione
@@ -58,11 +59,11 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
     int Rigged_Rolls = bot.percentage;
     int pendence = DiceSteps.at(bot.difficulty);
 
-    for(size_t trow = 0; trow < Rigged_Rolls; trow += T)
+    for(int trow = 0; trow < Rigged_Rolls; trow += T)
     {
         int sum = 0;
 
-        for(size_t i = 0; i < numbers.size(); i++)
+        for(int i = 0; i < numbers.size(); i++)
         {
             numbers.at(i) = die.TrowDice();
             sum += numbers.at(i);
@@ -71,7 +72,7 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
         if(sum > favourable_place - pendence &&
            sum < favourable_place + pendence)
         {
-            for(size_t i = trow; i < (trow + T) && i < MAX_LENGTH; i++)
+            for(int i = trow; i < (trow + T) && i < MAX_LENGTH; i++)
                 Rolls[i] = numbers.at(trow % T);
         }else{
             trow -= T;
@@ -79,11 +80,11 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
     }
 
     //insert normal values after rigged ones
-    for(size_t trows = Rigged_Rolls; trows < MAX_LENGTH; trows++)
+    for(int trows = Rigged_Rolls; trows < MAX_LENGTH; trows++)
         Rolls[trows] = die.faces[values(generator)];
 
     //get rigged numbers
-    for(size_t rolls = 0; rolls < T; rolls++)
+    for(int rolls = 0; rolls < T; rolls++)
         numbers.at(rolls) = Rolls[get_number(generator)];
 
     //NB: usi dado speciale se non hai vinto un minigame

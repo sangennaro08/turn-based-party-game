@@ -27,7 +27,7 @@ class Items
     //Goback
     //StoleSilver
     //Goahead
-    virtual std::variant<std::string, int/*, std::unordered_map<int, int>*/> UseItem(){}
+    virtual int UseItem(){return 0;}
 
     /*void UseItem();
 
@@ -46,9 +46,9 @@ class Items
         }
     }*/
 
-    protected:
+    virtual ~Items() = default;
+    //virtual ~Items(){}
 
-    //why an enum and not an enum class?
     enum ItemPrices : int
     {
         CHEAP     = 10,
@@ -59,9 +59,22 @@ class Items
         DELUXE    = 50
         
     };
+};
 
-    //same thing
-    virtual ~Items() = default;
-    //virtual ~Items(){}
+class PYItems : public Items
+{
+    public:
+
+    using Items::Items;
+
+    int UseItem() override
+    {
+        PYBIND11_OVERRIDE
+        (
+            int,
+            Items,
+            UseItem
+        );
+    }
 };
 

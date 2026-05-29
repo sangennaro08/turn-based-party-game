@@ -25,6 +25,6 @@ class GoBack: public Items
 
     ~GoBack(){}
 
-    std::variant<std::string, int> UseItem() override {return dist(gen);}
+    int UseItem() override {return dist(gen);}
 };
    

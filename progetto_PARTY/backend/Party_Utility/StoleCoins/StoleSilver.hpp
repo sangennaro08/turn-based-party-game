@@ -24,6 +24,6 @@ class StoleSilver : public Items
     {}
 
     //TODO implementare logica,vedere come fare e se funziona
-    std::variant <std::string, int> UseItem() override {return Stolable(gen);}
+    int UseItem() override {return Stolable(gen);}
 
 };
