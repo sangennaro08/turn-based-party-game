@@ -57,24 +57,6 @@ class Items
         EXPENSIVE = 30,
         PREMIUM   = 40,
         DELUXE    = 50
-        
     };
-};
-
-class PYItems : public Items
-{
-    public:
-
-    using Items::Items;
-
-    int UseItem() override
-    {
-        PYBIND11_OVERRIDE
-        (
-            int,
-            Items,
-            UseItem
-        );
-    }
 };
 
