@@ -59,4 +59,3 @@ class Items
         DELUXE    = 50
     };
 };
-
