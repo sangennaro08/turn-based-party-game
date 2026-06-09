@@ -13,7 +13,7 @@ class Inventory
 {
     public:
 
-    int silverCoins = 0;
+    int silverCoins = 10;
     int goldCoins = 0;
     
     //TODO implementare logica dell'array di oggetti di elementi da poter utilizzare

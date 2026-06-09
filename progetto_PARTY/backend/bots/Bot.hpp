@@ -1,7 +1,7 @@
 #pragma once 
 
 #include "./../Party_Utility/Items.hpp"
-#include "./Inventory.hpp"
+#include "./../Inventory/Inventory.hpp"
 
 /*
 
@@ -43,6 +43,7 @@ class Bot
 
     Bot(std::string name, std::string difficulty):
     name(std::move(name)),
+    Inv(Inventory()),
     difficulty(std::move(difficulty)),
     percentage(difficultiness.at(this->difficulty))
     {}

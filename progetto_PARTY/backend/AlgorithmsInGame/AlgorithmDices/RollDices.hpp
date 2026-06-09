@@ -8,7 +8,7 @@
 #include "./../../Party_Utility/Dices/Type_of_dices/TripleDice.hpp"
 
 #include "./../../bots/Bot.hpp"
-#include "./../../bots/Inventory.hpp"
+#include "./../../Inventory/Inventory.hpp"
 #include "./../../Party_Utility/Items.hpp"
 
 //TODO finire questo file
