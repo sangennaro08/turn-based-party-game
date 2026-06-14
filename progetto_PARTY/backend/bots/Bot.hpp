@@ -30,6 +30,7 @@ class Bot
     };
 
     const std::string name;
+    const std::string id;
     const std::string difficulty;
     const int percentage;
 
@@ -39,14 +40,20 @@ class Bot
 
     Inventory Inv;
 
-    std::thread th;
+    //std::thread th;
 
-    Bot(std::string name, std::string difficulty):
+    Bot(std::string name, std::string id, std::string difficulty):
     name(std::move(name)),
+    id(id),
     Inv(Inventory()),
     difficulty(std::move(difficulty)),
     percentage(difficultiness.at(this->difficulty))
     {}
     
     ~Bot(){}
+    /*~Bot()
+    {
+        if(th.joinable())
+            th.join();
+    }*/
 };

@@ -17,7 +17,7 @@ class Inventory
     int goldCoins = 0;
     
     //TODO implementare logica dell'array di oggetti di elementi da poter utilizzare
-    std::array <std::unique_ptr<Items>, 3> Utilities;
+    std::array <std::shared_ptr<Items>, 3> Utilities;
 
     Inventory(){}
 
@@ -25,8 +25,8 @@ class Inventory
 
     //TODO implementare logica,vedere come fare, farla virtuale così ogni oggetto ha il so comportamento
 
-    //                          vedere se usare una map per le coordinate della mappa
-    int UseItem(std::unique_ptr<Items>& Item)
+    //vedere se usare una map per le coordinate della mappa
+    int UseItem(std::shared_ptr<Items>& Item)
     {
         if(Item != nullptr)
             return Item->UseItem();
@@ -37,7 +37,7 @@ class Inventory
     //TODO vedere come vedere se l'aggiunta dell o elima dell oggetto è andata con successo
 
     //TODO vedere come fare, può essere che l'array è pieno o si può aggiungere,posso ritornare come no
-    int AddItem(std::unique_ptr<Items>& Item)
+    int AddItem(std::shared_ptr<Items>& Item)
     {
         for(auto& Utility : Utilities)
         {

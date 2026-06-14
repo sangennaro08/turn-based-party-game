@@ -65,7 +65,7 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
 
         for(int i = 0; i < numbers.size(); i++)
         {
-            numbers.at(i) = die.TrowDice();
+            numbers.at(i) = die.UseItem();
             sum += numbers.at(i);
         }
          
@@ -73,7 +73,7 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
            sum < favourable_place + pendence)
         {
             for(int i = trow; i < (trow + T) && i < MAX_LENGTH; i++)
-                Rolls[i] = numbers.at(trow % T);
+                Rolls[i] = numbers.at(i - trow);
         }else{
             trow -= T;
         }
@@ -87,7 +87,7 @@ inline auto RollDice(Bot& bot, Dice<N, T>& die)
     for(int rolls = 0; rolls < T; rolls++)
         numbers.at(rolls) = Rolls[get_number(generator)];
 
-    //NB: usi dado speciale se non hai vinto un minigame
+    //NB: you use special dice if you have it or you didn't win a minigame(wi will implement just Blackjack )
     if(bot.UseSpecialDie)
     {
         //die.RemoveItem(bot, die);

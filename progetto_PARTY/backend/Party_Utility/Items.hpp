@@ -1,10 +1,8 @@
 #pragma once
 
-#include "./../bots/Bot.hpp"
-#include "./Dices/Dice.hpp"
-
 #include <iostream>
 #include <memory>
+#include <string>
 #include <variant>
 
 class Items

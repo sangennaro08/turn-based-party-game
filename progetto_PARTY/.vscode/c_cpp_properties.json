@@ -1,0 +1,49 @@
+/*{
+    "configurations": [
+        {
+            "name": "MSVC Windows",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.26200.0",
+            "compilerPath": "C:/Programmi/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c23",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "windows-msvc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}*/
+
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/progetto_PARTY/Bridge-BE-FE/Comms-backend/pybind11/include",
+                "C:\\Users\\Studente\\AppData\\Local\\Programs\\Python\\Python314\\include"
+            ],
+
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "cl.exe", 
+            "cStandard": "c17",
+            "cppStandard": "c++23", // <-- Dice a VS Code che stai usando il C++23
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
