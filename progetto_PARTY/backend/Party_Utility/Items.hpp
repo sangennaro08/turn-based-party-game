@@ -49,11 +49,11 @@ class Items
 
     enum ItemPrices : int
     {
-        CHEAP     = 10,
-        BUDGET    = 15,
-        MODERATE  = 20,
-        EXPENSIVE = 30,
-        PREMIUM   = 40,
-        DELUXE    = 50
+        cheap     = 10,
+        budget    = 15,
+        moderate  = 20,
+        expensive = 30,
+        premium   = 40,
+        deluxe    = 50
     };
 };

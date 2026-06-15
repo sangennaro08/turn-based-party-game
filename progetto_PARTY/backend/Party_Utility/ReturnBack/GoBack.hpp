@@ -18,7 +18,7 @@ class GoBack: public Items
 
     GoBack(): Items("Go where you belong!", 
                     "IF applied to someone, he will go back an undeterminate times of blocks",
-                    ItemPrices::BUDGET),
+                    ItemPrices::budget),
     gen(rd()),
     dist(1, 5)                
     {}

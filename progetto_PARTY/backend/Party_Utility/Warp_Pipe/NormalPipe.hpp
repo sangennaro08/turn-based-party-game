@@ -12,6 +12,6 @@ class NormalPipe: public Items
 
     std::unordered_map<int, int> coordinate;
 
-    NormalPipe(): Items("Pipe", "Warps you to place in a radius within 4 blocks", ItemPrices::EXPENSIVE)
+    NormalPipe(): Items("Pipe", "Warps you to place in a radius within 4 blocks", ItemPrices::expensive)
     {}
 };

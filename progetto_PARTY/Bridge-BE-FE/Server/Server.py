@@ -12,13 +12,29 @@ import sys
 sys.path.append("build")
 
 #squirrel normale, legge lo stesso però vscode non riconosce bene i file binari
-import Comunication as cpp
+import Comunication
 
-print(cpp)
+try:
+    # 1. Inizializza un giocatore e un bot
+    giocatore = Comunication.Player("Mario", "ID_PLAYER_1")
+    bot = Comunication.Bot("LuigiBot", "ID_BOT_1", "hard")
+    
+    print(f"Giocatore creato: {giocatore.name}")
+    print(f"Bot creato: {bot.name} (Difficoltà: {bot.difficulty})")
+    
+    # 2. Controlla l'inventario iniziale
+    print(f"Monete d'argento iniziali di Mario: {giocatore.Inv.silverCoins}")
+    
+    print(Comunication.ItemPrices.budget.value)
 
-ciao = cpp.Player("ciao", "0")
+    # 3. Prova ad aggiungere un oggetto (es. il DoubleDice che creava problemi)
+    dado_doppio = Comunication.DoubleDice()
+    giocatore.Inv.AddItem(dado_doppio)
+    print("Dado doppio aggiunto all'inventario con successo!")
 
-print(ciao.name)
+except Exception as e:
+    print(f"Errore durante il test del modulo C++: {e}")
+
 
 """
 -
@@ -71,4 +87,3 @@ Restituisce la risposta a Uvicorn.
 # Initializing the Socket.io
 #sio_manager = SocketManager(app=app, cors_allowed_origins="*")
 #sio = sio_manager._sio
-

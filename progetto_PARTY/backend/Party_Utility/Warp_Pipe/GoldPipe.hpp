@@ -11,6 +11,6 @@ class GoldPipe : public Items
 
     std::variant<int, std::string> coordinates[13][13];
 
-    GoldPipe(): Items("Gold Pipe", "Warps you to a place of your choice", ItemPrices::DELUXE)
+    GoldPipe(): Items("Gold Pipe", "Warps you to a place of your choice", ItemPrices::deluxe)
     {}
 };

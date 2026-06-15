@@ -41,13 +41,13 @@ PYBIND11_MODULE(Comunication, m)
 {
 
     pybind11::enum_<Items::ItemPrices>(m, "ItemPrices")
-        .value("CHEAP", Items::CHEAP)
-        .value("BUDGET", Items::BUDGET)
-        .value("MODERATE", Items::MODERATE)
-        .value("EXPENSIVE", Items::EXPENSIVE)
-        .value("PREMIUM", Items::PREMIUM)
-        .value("DELUXE", Items::DELUXE)
-        .export_values();   
+        .value("cheap", Items::cheap)
+        .value("budget", Items::budget)
+        .value("moderate", Items::moderate)
+        .value("expensive", Items::expensive)
+        .value("premium", Items::premium)
+        .value("deluxe", Items::deluxe);
+        //.export_values();cosa fa? devo scirvere in maniera diversa per entrare nei valori dell'enum su python  
 
     pybind11::class_<Player>(m, "Player")
         .def(pybind11::init<std::string, std::string>())

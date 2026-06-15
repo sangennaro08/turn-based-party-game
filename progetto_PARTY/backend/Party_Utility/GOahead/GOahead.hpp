@@ -8,7 +8,7 @@ class GOahead: public Items
 
     int Boost = 5;
 
-    GOahead(): Items("Sprint boost", "IF used you will have a 5 block boost when used a die", ItemPrices::MODERATE)
+    GOahead(): Items("Sprint boost", "IF used you will have a 5 block boost when used a die", ItemPrices::moderate)
     {}
 
     int UseItem() override {return Boost;}
