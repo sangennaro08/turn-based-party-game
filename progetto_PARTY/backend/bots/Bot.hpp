@@ -19,7 +19,7 @@ class Bot
 {
     public:
 
-    const std::unordered_map<std::string, int> difficultiness
+    static inline const std::unordered_map<std::string, int> difficultiness
     {
         {"beginner",   10},
         {"easy",       30},
