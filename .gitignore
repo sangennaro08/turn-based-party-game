@@ -1,11 +1,10 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# CMake e Build C++
 build/
-*.exe
-*.dll
-*.obj
-*.bin
-*.ninja_deps
-*.ninja_log
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-build.ninja
+
+# Configurazione Visual Studio (se viene generata nella root)
+.vs/

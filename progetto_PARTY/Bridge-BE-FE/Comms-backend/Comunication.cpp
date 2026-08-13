@@ -13,7 +13,7 @@
 #include <memory>
 #include <random>
 #include <sstream>
-#include "../json.hpp"
+#include <nlohmann/json.hpp>
 #include <array> 
 
 //librerie per interfacciare le funzioni C++ al server python
@@ -66,7 +66,7 @@ PYBIND11_MODULE(Comunication, m)
         .def_readwrite("MoreDice", &Bot::MoreDice)
         .def_readwrite("UseSpecialDie", &Bot::UseSpecialDie)
         .def_readwrite("Inv", &Bot::Inv)
-        .def_readonly("difficultiness", &Bot::difficultiness);
+        .def_readonly_static("difficultiness", &Bot::difficultiness);
         //.def_readwrite("th", &Bot::th)
 
     pybind11::class_<Inventory>(m, "Inventory")
